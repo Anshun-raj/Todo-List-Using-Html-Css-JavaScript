@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todolist</title>
+    <style>
+        *{
+            background-color: yellow;
+        }
+        .head{
+            width: 500px;
+            min-height: 80vh;
+            margin: auto;
+            padding-top: 100px;
+        } 
+        #data{
+            height: 3vh;
+            width: 300px;
+        }  
+        #get{
+            width: 50px;
+            padding: 5px;
+            background-color: #000;
+            font-weight: bold;
+            border: 0;
+            outline: 0;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+      <div class="head">
+        <h1>Todo List</h1>
+        <input type="text" placeholder="enter a value" id="data">
+        <button type="button" id="get" onclick="get()">Add</button>
+        <div id="collect">
+  
+        </div>
+        <span id="err">
+
+        </span>
+      </div>
+      <script>
+        var data=document.getElementById('data');
+        var collect=document.getElementById('collect');
+        var btn=document.getElementById('get');
+        
+        function get()
+        {
+            var x=document.getElementById('data').value;
+            if(x=='')
+            {
+              document.getElementById('err').innerText="Please enter the value";
+            }
+        }
+
+        btn.addEventListener('click',function(){
+            var para=document.createElement("para");
+            para.innerText=data.value;
+            collect.appendChild(para);
+            data.value="";
+
+            para.addEventListener('click',function(){
+                para.style.textDecoration="line-through";
+            })
+    
+            para.addEventListener('dblclick',function(){
+                collect.removeChild(para);
+            })
+        })
+
+        
+    </script>
+</body>
+</html>
